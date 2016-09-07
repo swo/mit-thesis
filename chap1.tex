@@ -1,0 +1,124 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Introduction}
+
+Microbes, the oldest and most diverse type of life on Earth, are essential to
+human life and industry. Microbes catalyze key biogeochemical cycles, clean up
+toxic pollution, and can prevent or cure disease. Microbial ecology---the study of
+microbes' relationships with one another and their environment---has
+benefited tremendously from nucleic acid sequencing technology. RNA was first
+sequenced in the 1960s~\cite{sanger_two_1965}. Microbiologists, notably Carl
+Woese, used sequences of 16S rRNA, present in all bacteria and archaea, to
+develop a more accurate ``tree'' of microbial
+life~\cite{woese_phylogenetic_1977,pace_phylogeny_2012}. DNA was first
+sequenced in the 1970s, and 16S rRNA gene sequences were directly amplified
+from the environment and sequenced for the first time in
+1990~\cite{giovannoni_genetic_1990,case_use_2007}. High-throughput sequencing
+and sample multiplexing~\cite{hamady_error_2008} have enabled microbial
+ecologists to collect large datasets at a decreasing cost of time and money.
+
+Even as tools to process nucleic acid sequence data for microbial ecology
+mature, there remain challenges to interpreting sequence data and integrating
+them with other types of microbial ecology data. In this thesis, I present
+the results of three projects that aim, in part, to help interpret microbial
+sequence data. In Chapter 2, I discuss the Treatment Effect eXplorer for
+Microbial Ecology Experiments (\texttt{texmex}), an analytical tool designed to
+extract information about the dynamics of microbial taxa from microbial
+ecology experiments with few timepoints and few or no replicates. In Chapter 3,
+I discuss a novel biogeochemical model of a lake ecosystem, a novel
+network-analysis method for organizing microbial ecology sequence data,
+and intepretative frameworks for linking those models and methods with
+survey data and a single-cell genetic assay. In Chapter 4, I discuss an
+``omics-free'' model designed to guide the design and execution of clinical
+trials that use fecal microbiota transplants. In the rest of this chapter,
+I introduce and contextualize these contributions; in the final chapter,
+I discuss the limitations and potential extensions of theses studies.
+
+\section{Interpreting microbial ecology sequence data}
+A major challenge in analyzing and interpreting microbial ecology experiments
+that use sequencing is to determine which microbial taxa are meaningfully
+different in abundance. Most approaches to this question are statistical and
+focus, one-by-one, on the abundances of each taxon, analogous to methods that
+identify differentially expressed genes in transcriptomic data (e.g.,
+DESeq~\cite{anders_high_2010}). The $t$-test and simple ordinations have been
+mainstays of this type of analysis for microbial ecology sequence
+data~\cite{segata_metagenomic_2011}.
+
+This approach presents difficulties when there are few or no biological
+replicates, compositional effects affect measurements of composition, or when
+it is important to integrate pre-test samples. I therefore developed
+\texttt{texmex}, which considers the distribution of abundances of microbial taxa
+\emph{within} a sample to make a more coherent comparison of abundances across
+samples. I noted that microbial abudances within a sample follow the Poisson
+lognormal distribution, which had been previously studied in macroecology, and
+used that distribution to ``normalize'' the abundances of microbial taxa
+within samples before comparing abundances across samples. As described in
+Chapter 2, I applied this technique to short timeseries experiments measuring
+the response of ocean microbial communities to amendment with crude oil,
+verifying the presence of known oil degraders and suggesting that other
+organisms, implicated in other crude oil microcosm experiments, are also
+involved in crude oil degradation.
+
+Microbial ecology surveys that use taxonomic marker gene sequence data
+confront a different problem: the relationship between phylogeny and
+function. Taxonomic marker gene sequencing (e.g., 16S rRNA amplicon sequencing)
+provides information about microbial community structure but provides
+only indirect information about microbial community function~\cite{langille_predictive_2013}. Metagenomic
+sequencing provides more direct information about community function,
+but it is expensive and mostly discards information about the relationships
+between phylogeny and function.
+
+In Chapter 3, I describe a set of tools used to identify potential consortia
+of cooperating organisms in a natural ecosystem. This study includes a
+taxonomic survey of the environment, an ecosystem-level model of microbial
+metabolisms, and a single-cell genetic assay that links phylogeny and
+function. For that study, I developed a network-analysis method (operational
+ecological units) for the survey data and an interpretative framework
+(inferred biomass) for the model result. These tools provided a conceptual
+link between all three types of data, which were together essential for
+the putative \textit{in situ}, perturbation-free identification of
+microbial consortia.
+
+\section{Clinical trial design}
+Fecal microbiota transplantation (FMT) is a highly effective intervention for
+patients suffering from recurrent \textit{Clostridium difficile}, a
+common nosocomial infection~\cite{kassam_fecal_2013}. As the gut microbiome is
+assigned an increasingly important role in the development and maintenance of host
+gut health, immunity, and even psychology, the success of FMT for \textit{C.
+difficile} has generated interest in using FMT to treat other conditions to
+which an ``unhealthy'' gut microbiota may
+contribute~\cite{smits_therapeutic_2013}. Although the exact mechanism by which FMT
+treats \textit{C. difficile} is not well understood, a few clinical
+trials have already experimented with using FMT as a treatment for other
+conditions, and many more trials for a variety of diseases will probably begin
+in the coming years.
+
+These early trials using FMT to treat conditions beyond \textit{C. difficile}
+have had some confusing and disappointing results. Of two recent
+trials using FMT to treat inflammatory bowel disease, one
+failed~\cite{rossen_findings_2015} and the other produced an unexpected
+result: five of six stool donors in the trial appeared to produce results no
+better than treating the patients with placebo, while the sixth donor produced
+stool that appeared to have substantially greater efficacy~\cite{moayyedi_fecal_2015}.
+
+If this sort of difference in efficacy between donors' stool is real, then
+what are the implications for clinical trial design? 
+To answer this question, I designed a model of differences in stool
+efficacy and used the model to predict the statistical power of typical trial
+designs. These results, laid out in Chapter 4, show that, if the results
+from this recent inflammatory bowel disease trial are representative, then
+FMT's efficacy is only likely to be discovered using larger patient cohorts
+and response-adaptive allocation of donors' stool. I used this model
+to aid the design of a two-stage phase I clinical trial using FMT to treat
+a gastrointestinal condition, and I expect that these power calculations and
+adaptive allocation strategies will improve clinical trial design, improving
+the probability that patients will have access to a new therapy.
+
+\begin{singlespace}
+\bibliography{main}
+\bibliographystyle{unsrt}
+\end{singlespace}

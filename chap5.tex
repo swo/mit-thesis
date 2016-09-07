@@ -1,0 +1,262 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Discussion}
+
+\section{Summary and limitations of reported work}
+This thesis describes contributions to the interpretation of microbial
+ecology sequence data and to the design of clinical trials. These contributions
+each have limitations that restrict their validity and applicability.
+
+In Chapter 2, I introduced \texttt{texmex}, a tool designed to quantify the dynamics of
+microbial taxa in microbial ecology experiments that use amplicon sequence
+data, use pre-tests, and have few or no replicates. I expect this approach
+will be helpful when researchers want to analyze a pilot experiment, the
+environmental inoculum is difficult to acquire, or the experimentation is
+particularly onerous. Ideally, a researcher would perform many replicate
+experiments and use that information for a rigorous statistical inference that
+does not require any special consideration of the ecological structure of the
+data in question, thus obviating the need for a technique like \texttt{texmex}.
+Because the method is not statistical, however, it will never supplant
+methods that are designed to determine whether two sets of measurements are
+meaningfully different from a statistical standpoint.
+
+In Chapter 3, I introduced the operational ecological unit (OEU) and
+the inferred biomass interpretative framework to link taxonomic survey data, an
+ecosystem-level metabolic model, and the results from a single-cell genetic
+assay. The model itself is conceptual and intentionally simple; it therefore
+lacks the ability to describe complicated features of the lake
+ecosystem it models. For example, the model could never predict the
+hypolimnetic oxygen minimum observed in the survey data. Operational
+ecological units are essentially statistical and not necessarily functional,
+so it is not straightforward to confirm or disprove their ``existence''. The
+utility of the OEU concept could be evaluated by comparing an analysis of OEUs
+with a large database of known ecological interactions. The inferred biomass
+framework makes concrete, verifiable claims about microbial community function
+that could be compared with metagenomic data and, ultimately, verified or
+disproved by comparison with an exhaustive, \textit{in situ} survey of
+ecosystem function. The results of the study are overall very suggestive, but
+they are not experimentally verified and would require extensive co-culturing
+or perturbative, \textit{in situ} metabolic experiments to validate.
+
+In Chapter 4, I introduced a model of differences in donors' stool with
+respect to its probability to cause patients to respond to treatment with fecal microbiota
+transplant. The model makes concrete predictions about the utility of clinical
+trial designs, but the structure of the model is based on a small amount of
+clinical trial data and would require extensive clinical trial data to verify.
+This study is in a catch-22: it aims to improve the probability of finding the
+statistically-significant clinical trial data that would provide the only way to
+assess the validity of the model.
+
+\section{Potential extensions of reported work}
+\subsection{Rank-abundance distributions and small data}
+In a narrow sense, \texttt{texmex} is a software package that converts OTU tables
+into tables of values related to the initial counts and provides convenience
+functions for manipulating and selecting interesting OTUs based on those
+transformed values. More broadly, that work makes two contributions that should
+be helpful for future efforts to improve the interpretability of DNA sequence
+data in microbial ecology.
+
+First, I was surprised that I could find no studies that directly
+examined or utilized the rank-abundance distribution of microbial ecology
+sequence data. (I found only one paper that fit a rank-abundance distribution to
+microbial ecology data~\cite{kembel_incorporating_2012}, and I describe what I
+perceive as deficiencies in the logic of its application in Chapter 2.) I
+believe that there are many applications that will emerge from using such
+rank-abundance distributions, just as $z$-scores make normally-distributed data
+more tractable for analysis. In particular, I expect that any attempt to
+compare OTUs across samples could benefit from the kind of ``normalization''
+that \texttt{texmex} does.
+The standard statistical approach, in which an OTU's counts across samples are
+modeled as variates of a single random variable, seems like a weak approach
+compared to focusing on the ecological processes that cause the entire community
+to assemble.
+
+This sort of sample-wise approach should also be helpful for understanding some
+of the more confusing aspects of microbiome data, particularly the zeros and
+the effects of rarefaction.
+It is becoming clearer that micro- and macroecology can share their methods~\cite{hughes_counting_2001},
+so microbial ecologists should, in some cases, pay closer attention to the
+methods and approaches used in traditional ecology.
+
+Second, \texttt{texmex} starts from a very different place from many other
+analytical methods: it assumes a paucity of data rather than an abundance.
+As DNA sequencing has become cheaper, it is tempting to believe that microbial
+ecology is now limited only by the cleverness of the algorithms used to generate
+the data or the cleverness of the scientists who decide what questions to
+investigate. In fact, sample acquisition is still, in many cases, a limiting
+factor in microbial ecology, as has been my experience in the project described
+in Chapter 2 (as well as in a separate project in coordination with the Department
+of Energy).
+If a study is not comfortably in the regime of
+big data, I believe it is wiser to relegate yourself to the regime of small
+data. Although you can ``do statistics'' with three samples, if you cannot
+get twenty samples, it might be wiser to collect two and use a small-data
+technique for the first experiment. As reviewers of the manuscript pointed
+out, it is always better, \textit{ceteris paribus}, to have more replicates.
+My point is that having more replicates always come at some cost, and the
+added replicates might deliver a $p$-value without any additional scientific insight.
+
+I was impressed that a recent paper studying oil degradation pathways in
+samples collected from the Deepwater Horizon spill---and which used an impressive
+combination of isotope labeling and metagenomic sequencing---identified similar organisms
+as my algorithm did~\cite{dombrowski_reconstructing_2016}, showing the power
+that small data and wise analytics can have.
+
+There were extensions of this work that were outside the scope of this
+thesis. Are there datasets that are sufficiently well-resolved to be able
+to distinguish the rank-abundance distribution of microbial ecosystems?
+Is that distribution the Poisson-lognormal distribution or something else? Is it different
+for different ecosystems? What does that tell us, theoretically,
+about the structure of those communities? Can we use rank-abundance models
+to avoid the problems that compositional data present for analysis?
+Can we use rank-abundance distributions to infer more rational models of
+the behavior of taxa across samples? Relatedly, can we use rank-abundance
+models and timeseries data to draw inferences about the dynamical behaviors
+of individual taxa and entire bacterial communities? Can we better explain
+the overdisperse and apparently noisy behavior of taxa through time?
+
+\subsection{Modeling, consortia, and combinations of methodologies}
+Like \texttt{texmex},
+the methods used for the project described in Chapter 3 also aimed to extract the maximum amount of
+insight from limited data. This project integrated the results from
+multiple methods to yield a single, biologically-interpretable discovery.
+This integration carries some lessons of its own.
+
+First, models of microbial communities should aim for an optimum between complexity
+and falsifiability. Because the data generated by DNA sequencing are so
+massive and so complicated, it is tempting to make a complicated model
+of their behavior. However, even if such a model were made and even if it
+correctly recapitulated the system's behavior, are we better off for
+having it? For example, the model reported in this project used abstract
+categories (e.g., sulfate reduction) to describe microbes' behavior.
+The identity of the microbes that seemed to belong in that abstract
+category was determined separately, and it is the link between the
+microbes' identity and the abstract behavior in the model that was useful.
+If the model had perfectly described the behavior of every microbial
+species, then we would have produced a system exactly as complicated
+as the natural one, which would not advance our ability \emph{interpret}
+the system.
+
+Indeed, one of the strengths of the model presented in that work is that
+it was \textit{a priori} unclear if it would even remotely recapitulate the lake's chemical
+dynamics. If it did not, then it would be immediately clear that our mental
+picture of the processes that shape the lake's behavior was largely
+incomplete. Adding another process into the model (e.g., the interaction
+between iron and sulfur) would hold the model and the associated data
+to a much more stringent measure: it would require a great enough precision
+in the data to be able to distinguish between the cases in which the
+iron-sulfur interactions are included or not. Given the year-to-year
+variability in this system, an ecosystem-wide model is not the appropriate
+tool for making that discrimination. The simple fact that the model
+worked at all---and that, if it had not worked, we would have learned
+something too---is its major contribution. A model that is not interesting
+if it fails is one that should not be considered interesting if it
+succeeds.
+
+There is probably great opportunity for modeling in microbial systems.
+The model used in this project was based on a pre-next-generation-sequencing
+model of microbes in a groundwater aquifer responding to pollutants,
+which also highlights the fact that literature from before 1990 can
+be full of interesting insights and thorny questions that we now have
+the tools to explore more deeply.
+
+For example, despite direct measurements of bacterial growth in
+zebrafish~\cite{jemielita_spatial_2014} and a bacterium genetically
+engineered to answer questions about the rate of division in the gut~\cite{myrhvold_distributed_2015},
+I have not seen a model of division and colonization in the mammalian
+gut that accounts for its directionality: how does the unidirectional transport
+of vast quantities of microbes from the ``top'' to the ``bottom'' affect
+the microbial composition in the gut? Are downstream populations
+less diverse than upstream populations because every microbial species
+present at the bottom must have once been near the top?
+
+Second, this project makes an early, unrefined estimate of the prevalence
+of microbial consortia in natural environments. Before nucleotide sequencing,
+bacterial species were distinguished based on their appearances or tests
+of their metabolisms. This process was finicky and low throughput, so we
+had vastly underestimated the diversity of microbes. I believe we are on
+the cusp of a similar revelation about microbial consortia. I expect that
+theoretical arguments would show that a large number of cooperative species
+should be expected, and this contrasts against the very small number of
+consortia that are known and studied. The possibility that there are
+large numbers of consortia in many ecosystems is probably the most
+scientifically interesting and important result in this thesis.
+
+Third, this project shows the potential that combinations of methods
+can play in understanding microbial systems. Surveys on their own
+do little to address microbial function; models on their own
+can seem like intellectual playgrounds unconnected to reality; high-throughput
+screens on their own can generate large amounts of data with small amounts
+of insight. In particular, I expect that combinations of models, surveys,
+and metabolite measurements will provide interesting and useful
+information about the interactions between microbial species (and hosts if
+they have them).
+
+\subsection{Decision-making in microbiome science}
+The third project in this thesis is an outlier: it describes a
+simple model---like Chapter 3 does---but it uses the model for
+an entirely different purpose. Rather than developing information
+about the possible behavior of a system, it uses a model and data to
+make a decision in face of a question. (This distinction is reminiscent
+of the difference in interpretations of the $p$-value~\cite{goodman_toward_1999} between Fisher,
+who originally formulated it as a method to discern truth~\cite{fisher_statistical_1973}
+and Neyman and Pearson, who saw it as a way to decide actions~\cite{neyman_problem_1933}.)
+I will venture to say that most models in the world are, like this one,
+operational models: they are designed to integrate data to inform a 
+decision.
+
+DNA sequencing is already being used in medicine to, for example,
+diagnose infections, and there is hope that more sophisticated,
+rapid, point-of-care diagnostics will be useful to, say, use information
+about the genetics of the pathogen to decide
+which antibiotic to administer to a patient.
+However, the role of modeling in decision science
+for microbiome science, as such, remains unclear. In what cases could
+a large collection of information about the microbes inhabiting a
+person's gut be useful for making a decision? What decision would
+be made?
+
+There are some appealing answers. Measurements of the microbiome
+could be used to diagnose a disease that is otherwise difficult or
+invasive to diagnose \cite{papa-noninvasive-2012}, to quantify the
+risk that a patient will develop a disease, or to help stratify
+patients based on the probability that they will respond to certain
+drugs \cite{koeth-intestinal-2013,sivan-commensal-2015,vetizou-anticancer-2015}.
+I expect a ``middle'' way will also be profitable. A model that
+combines a simple treatment of a system (e.g., as in Chapter 4,
+each donor is considered efficacious or not) and a more complex one
+(e.g., it is asserted that the presence or absence of some microbial
+taxon in the donor determines the probability of patient response)
+could recommend decisions that are nearly optimal with respect to
+the simple, operational model while deriving greater benefit for
+the more complex, mechanistic model. This operational half of
+the approach might get complex hypothesis-testing into the clinic,
+since the simple half of the algorithm could be relied upon to
+make sensible decisions even if it became clear that the complex,
+mechanistic model was completely incorrect.
+
+In general, I caution microbiome scientists against interpreting too
+much from 16S sequencing data. The fact that DNA sequencing is a
+less-biased way to enumerate communities than traditional 
+culture-based methodologies may have reduced the emphasis on the
+problems that DNA sequencing presents: the microbiome appears to
+be a dynamic, noisy system; extraction and preparation methodologies
+greatly affect the output signal; different bioinformatic techniques
+can lead to different scientific conclusions; and proper methods
+of statistical analysis for these data are still under debate.
+Targeted questions with large sample sizes and perturbative
+techniques are the best avenue for conclusions; small experiments
+with decidedly exploratory analytical methods are the best
+avenue for developing avenues for fuller investigation.
+
+\epigraph{{\selectlanguage{polutonikogreek}κτῆμά τε ἐς αἰεὶ μᾶλλον
+ἢ ἀγώνισμα ἐς τὸ παραχρῆμα ἀκούειν ξύγκειται.}}{Thucydides, \textit{History}, 1.22.4}
+
+\begin{singlespace}
+\bibliography{main}
+\bibliographystyle{unsrt}
+\end{singlespace}

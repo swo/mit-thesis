@@ -1,0 +1,51 @@
+% use the MIT thesis document class
+\documentclass[12pt]{mitthesis}
+
+% some packages needed for library-compliant typesetting
+\usepackage{lgrind}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\pagestyle{plain}
+
+% packages I put into the template 
+\usepackage{pdfpages} % to include pdfs
+\usepackage{caption} % for caption*
+\usepackage{graphicx}
+\usepackage{chapterbib} % for bibliographies in each chapter
+\usepackage{tocloft} % for fixing table of contents
+\usepackage[linktocpage=true]{hyperref} % for internal links
+\usepackage{booktabs} % for nice tables
+\usepackage{lscape} % for a landscape page (extra-wide table)
+
+% options for controlling the table of contents typesetting
+\setcounter{tocdepth}{0} % only show chapters in table of contents
+\renewcommand{\cftchapfont}{\rmfamily} % chapters in not bold
+\renewcommand{\cftchappagefont}{\rmfamily} % page in not bold
+
+% for inputting the ancient Greek
+\usepackage[utf8x]{inputenx}
+\usepackage[polutonikogreek,english]{babel}
+\usepackage{epigraph}
+
+\begin{document}
+
+\include{cover}
+\pagestyle{plain}
+\include{contents}
+
+% include each tex file
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\appendix
+\include{appa}
+\include{appb}
+
+% Include the biblio file if you want to have a single, monolithic list of references
+% at the end of the thesis. If you do not include the biblio file, you'll have to put
+% bibliographies at the end of each chapter.
+%\include{biblio}
+
+\end{document}
