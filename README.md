@@ -17,6 +17,9 @@ I also wholesale included some `.pdf` files (in the three subfolders) because th
 typeset in other LaTeX documents (and I didn't want to transfer them) or they were typeset in
 Word (and I wasn't interested in manually transcribing and correcting them).
 
+When you put everything together, it should come out like the `expected-output.pdf`, which is
+the thesis I submitted to MIT.
+
 ### The front matter
 This is where the template really shines. It's confusing how to typeset
 all those pages.
